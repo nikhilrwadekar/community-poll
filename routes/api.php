@@ -38,3 +38,6 @@ Route::any('errors', 'PollsController@errors');
 
 // API Managed End-point for Questions
 Route::apiResource('questions', 'QuestionsController');
+
+// Poll specific questions
+Route::get('polls/{poll}/questions', 'PollsController@questions');

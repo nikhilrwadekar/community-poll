@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Poll;
 use Validator;
+use App\Http\Resources\Poll as PollResource;
 
 class PollsController extends Controller
 {
@@ -19,7 +20,9 @@ class PollsController extends Controller
         if (is_null($poll)) {
             return response()->json(null, 404);
         }
-        return response()->json(Poll::findOrFail($id), 200);
+
+        $response = new PollResource(Poll::findOrFail($id), 200);
+        return response()->json($response, 200);
     }
 
     // Save a new poll
@@ -54,4 +57,12 @@ class PollsController extends Controller
     public function errors() {
         return response()->json(['msg' => 'Payment is required.'], 501); // 501 - Server does not know how to process the request.
     }
+
+    // Get Questions for the Poll (Subresources)
+    public function questions(Request $request, Poll $poll) {
+        $questions = $poll->questions;
+
+        return response()->json($questions, 200);
+    }
+
 }
