@@ -49,4 +49,9 @@ class PollsController extends Controller
         
         return response()->json(null, 204); // 204 - NO content, Deleted!
     }
+
+    // Error Handler
+    public function errors() {
+        return response()->json(['msg' => 'Payment is required.'], 501); // 501 - Server does not know how to process the request.
+    }
 }
