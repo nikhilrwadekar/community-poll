@@ -16,4 +16,11 @@ class PollsController extends Controller
     public function show($id) {
         return response()->json(Poll::find($id), 200);
     }
+
+    // Save a new poll
+    public function store(Request $request) {
+        $poll = Poll::create($request->all()); // Get all the data from the request
+
+        return response()->json($poll, 201); // 201 - Created a new resource
+    }
 }

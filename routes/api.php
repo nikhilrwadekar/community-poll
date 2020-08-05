@@ -23,3 +23,6 @@ Route::get('polls', 'PollsController@index');
 
 // Single Post (with an 'id') - show is standard for view in Laravel
 Route::get('polls/{id}', 'PollsController@show');
+
+// Save Poll
+Route::post('polls', 'PollsController@store');
