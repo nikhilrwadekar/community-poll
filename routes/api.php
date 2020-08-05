@@ -26,3 +26,6 @@ Route::get('polls/{id}', 'PollsController@show');
 
 // Save Poll
 Route::post('polls', 'PollsController@store');
+
+// Update Poll
+Route::put('polls/{poll}', 'PollsController@update');

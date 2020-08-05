@@ -23,4 +23,11 @@ class PollsController extends Controller
 
         return response()->json($poll, 201); // 201 - Created a new resource
     }
+
+    // Update an existing poll
+    public function update(Request $request, Poll $poll) {
+        $poll->update($request->all());
+
+        return response()->json($poll, 200); // 200 - OK Updated
+    }
 }
