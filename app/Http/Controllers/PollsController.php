@@ -30,4 +30,11 @@ class PollsController extends Controller
 
         return response()->json($poll, 200); // 200 - OK Updated
     }
+
+    // Delete an existing poll
+    public function delete(Request $request, Poll $poll) {
+        $poll->delete();
+        
+        return response()->json(null, 204); // 204 - NO content, Deleted!
+    }
 }
