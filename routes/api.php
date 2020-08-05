@@ -35,3 +35,6 @@ Route::delete('polls/{poll}', 'PollsController@delete');
 
 // All Routes except the above!
 Route::any('errors', 'PollsController@errors');
+
+// API Managed End-point for Questions
+Route::apiResource('questions', 'QuestionsController');
